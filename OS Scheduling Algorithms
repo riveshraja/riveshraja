@@ -1,0 +1,94 @@
+#include<stdio.h> 
+
+int i,t,j,n;
+int BRUST_TIME[10],PROCESS_NUMBER[10];
+float bill[10];
+float cost;
+	
+void CREATE_BILL()             
+{		  
+    printf("STUDENT_NO\t\tTOTAL GIFTS PURCHASED\t\tBILL\n\n"); 
+
+	for (i=0;i<n;i++)
+	{ 
+	    printf("STUDENT NO. = %d \t\t",PROCESS_NUMBER[i]);
+        printf("%d \t\t\t",BRUST_TIME[i]);
+        bill[i]=cost*BRUST_TIME[i];
+	  	printf("Rs= %0.2f \t\t\t",bill[i]); 
+	    printf("\n");
+	}
+}
+
+void get_details() //list of gifts taken by students  (entered value by user)
+{
+	printf("\n");
+	printf("\n");
+    printf("******************ENTERED DATA*****************\n\n");
+	printf( "\nSTUDENT NO.\t\tNO.OF GIFTS PURCHASED \n"); 
+
+	for (i=0;i<n;i++)  
+	{ 
+	    printf("STUDENT NO. = %d \t\t" ,PROCESS_NUMBER[i]);  
+	    printf("%d \t\t\t",BRUST_TIME[i]);                  
+	    printf("\n\n");
+	} 
+}
+
+void sorting()    //arrangement of students according to no of gifts chosen 
+   { 
+    printf("**********ORDER OF BILLED STUDENTS************* \n\n");
+	for(i=0;i<n;i++)
+    {
+    	for(j=i+1;j<n;++j)
+		{
+		    if(BRUST_TIME[i]<BRUST_TIME[j])
+			{
+                t=BRUST_TIME[i];                    
+           	    BRUST_TIME[i]=BRUST_TIME[j];
+                BRUST_TIME[j]=t;
+                t=PROCESS_NUMBER[i];           
+                PROCESS_NUMBER[i]=PROCESS_NUMBER[j];
+                PROCESS_NUMBER[j]=t;
+            }
+        }
+    }   
+  }
+
+
+int main() 
+{ 
+	printf("------ OPERATING SYSTEM ------- \n \n");
+	printf(" NAME : RIVESH RAJA ");
+	printf("\n");
+	printf("ASSIGNMENT OF CSE 316");
+	printf(" \n[ Based on Scheduling Algorithms ]\n ");
+	printf("\n");
+	printf(" Welcome to the Shop ");
+	printf("\n");
+	
+	printf(" TOTAL 10 STUDENTS ");
+	
+	printf("\n");
+	
+	printf("Enter How Many Students Purchase Gifts out of 10(A,B,C,D,E,F,G,H,I,J) =");
+    scanf("%d",&n);
+    printf("Enter cost of gift =");
+    scanf("%f",&cost);
+    printf("Now Enter How Many Gifts Each Students Purchased individually\n");
+    printf("\n");
+    printf("*************************************************************");
+    printf("\n");
+	for(i=0;i<n;i++)
+    {
+        printf("\nSTUDENT_NO[%d] \n",i+1);
+        printf("Enter How Many Gifts Purchased =");
+        scanf("%d",&BRUST_TIME[i]);
+        PROCESS_NUMBER[i]=i+1; 
+    }
+
+   
+get_details();
+sorting();
+CREATE_BILL();
+         
+}
